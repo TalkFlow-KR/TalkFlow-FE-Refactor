@@ -1,8 +1,11 @@
 {
-  "extends": ["react-app", "prettier", "airbnb"],
+  "extends": ["react-app", "prettier", "airbnb","plugin:react/recommended", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": ["error"],
+    "react/jsx-closing-bracket-location": "warn",
+    "semi": ["warn", "always"],
+    "prettier/prettier": ["error",
+      {"endOfLine": "auto"}],
     "react/jsx-filename-extension": 0
   }
 }
