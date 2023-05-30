@@ -1,70 +1,38 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# KDT 6기 팀프로젝트 TalkFlow React 리뉴얼 작업입니다.
+* redux/toolkit 이용해서 states 관리 
+* atomic pattern 과 polymorphic component 를 이용한 컴포넌트/ 설계 최적화 
+* styled-components 를 이용한 스타일 관리 
+* Lottie-Web / React Icons / React-useAnimations 를 이용한 스타일링
 
-## Available Scripts
+<hr>
 
-In the project directory, you can run:
+* 인덱스 
+* 로그인 / 회원가입 페이지 
+* 메인 페이지 (/dashboard)
+* 페이지 1 (/chat)
+* 페이지 2 (/create)
+* 페이지 3 (/history)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## npm run build
 
-### `npm test`
+## Github commit message 규칙 
+`npm i -g gitmoji-cli`
+* git commit -m 대신 gitmoji -c 로 커밋 하기 ( git add . // gitmoji -c // git push origin branch)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### gitmoji --help
 
-### `npm run build`
+* ♻️ : 코드개선 / 코드리팩토링 
+* 🐛 : 버그 수정
+* 🚚 : 파일 이름 변경 / 리소스 이동
+* 🔥 : 파일/코드 삭제 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* 💄 : UI / 스타일
+* ✨ : 새 기능 추가 : fear/add 
+* 💡 : 주석 추가 // 텍스트 추가
+* 🙈 : .gitignore 추가 및 수정
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* 💩 : 코드가 안 좋을 때..(수정이 필요할 떄 )
