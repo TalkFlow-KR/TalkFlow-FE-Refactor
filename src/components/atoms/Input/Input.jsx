@@ -1,16 +1,12 @@
 import React from "react";
-import styled from "styled-components";
-
-const StyledInput = styled.input`
-  width: 100%;
-`;
+import { Container, StyledInput } from "./Input.styled";
 
 // props 받아서 polymorphic 컴포넌트 만들기
 function Input(props) {
   return (
-    <div>
-      <StyledInput />
-    </div>
+    <Container>
+      <StyledInput type="text" placeholder="sample" />
+    </Container>
   );
 }
 
