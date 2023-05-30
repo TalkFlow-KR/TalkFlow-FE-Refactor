@@ -1,10 +1,11 @@
 
 # KDT 6기 팀프로젝트 TalkFlow React 리뉴얼 작업입니다.
-* redux/toolkit 이용해서 states 관리 
-* atomic pattern 과 polymorphic component 를 이용한 컴포넌트/ 설계 최적화 
-* styled-components 를 이용한 스타일 관리 
-* Lottie-Web / React Icons / React-useAnimations 를 이용한 스타일링
+* redux/toolkit 이용해서 states 관리   
+* atomic pattern 과 polymorphic component 를 이용한 컴포넌트/ 설계 최적화   
+* styled-components 를 이용한 스타일 관리   
+* Lottie-Web / React Icons / React-useAnimations 를 이용한 스타일링  
 
+(https://github.com/useAnimations/react-useanimations)
 <hr>
 
 * 인덱스 
