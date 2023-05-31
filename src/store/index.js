@@ -10,10 +10,12 @@ export const asyncUpFetch = createAsyncThunk(
   "counterSlice/asyncUpFetch",
   async () => {
     console.log("async start");
+    // const res = await fetch(
+    //   `https://api.countapi.xyz/hit/${encodeURIComponent(
+    //     "http://localhost:3000"
+    //   )}/get/test`
     const res = await fetch(
-      `https://api.countapi.xyz/hit/${encodeURIComponent(
-        "http://localhost:3000"
-      )}`
+      "https://api.countapi.xyz/hit/opesaljkdfslkjfsadf.com/visits"
       // CORS / 500 에러 뜸 비동기 테스트만 할 것
     );
     const data = await res.json();
