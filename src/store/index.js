@@ -9,7 +9,13 @@ import {
 export const asyncUpFetch = createAsyncThunk(
   "counterSlice/asyncUpFetch",
   async () => {
-    const res = await fetch("http://");
+    console.log("async start");
+    const res = await fetch(
+      `https://api.countapi.xyz/hit/${encodeURIComponent(
+        "http://localhost:3000"
+      )}`
+      // CORS / 500 에러 뜸 비동기 테스트만 할 것
+    );
     const data = await res.json();
     // return이 action.payload가 됨.
     return data.value;
@@ -24,6 +30,7 @@ const counterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(asyncUpFetch.pending, (state) => {
+      console.log("test start");
       // 로딩스크린
       state.status = "Loading";
     });
@@ -39,7 +46,7 @@ const counterSlice = createSlice({
 });
 
 const store = configureStore({
-  counter: counterSlice.reducer,
+  reducer: { counter: counterSlice.reducer },
 });
 
 export default store;
