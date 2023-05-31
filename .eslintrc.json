@@ -5,6 +5,7 @@
     "semi": ["warn", "always"],
     "prettier/prettier": ["error",
       {"endOfLine": "auto"}],
-    "react/jsx-filename-extension": 0
+    "react/jsx-filename-extension": 0,
+    "no-param-reassign": ["error", { "props": false }]
   }
 }
