@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import MHeader from "../../components/atoms/Header/mHeader";
+import MFooter from "../../components/atoms/Footer/mFooter";
 // 말풍성 생성시 스크롤 맨밑으로
 // input 크기 넓어지면 커지는 동적 width /height
 const Container = styled.div`
@@ -11,11 +13,6 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 1rem;
   gap: 1rem;
-  & header {
-    display: flex;
-    justify-content: space-between;
-    min-height: 62px;
-  }
   & section {
     background-color: #eee;
     border-radius: 8px;
@@ -32,11 +29,11 @@ const Container = styled.div`
   & section article div {
     margin: 1rem 0;
   }
-  & section .partner {
+  & section .ai {
     display: flex;
     justify-content: flex-start;
   }
-  & section .partner > span {
+  & section .ai > span {
     display: inline-block;
     height: 100%;
     text-align: left;
@@ -56,39 +53,22 @@ const Container = styled.div`
     border-radius: 8px;
     margin-right: 8px;
   }
-  & footer {
-    background-color: #fff;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 2rem;
-  }
-  & footer > div {
-    display: flex;
-    flex: 1;
-    background-color: orange;
-    width: fit-content;
-  }
-  & footer > div > input {
-    transition: all 0.3s ease-in-out;
-    width: initial;
-  }
-  & footer > div > input:focus {
-    width: 100%;
-  }
 `;
-function MMain() {
+function MMain({ data }) {
+  console.log(data);
+
   // mChat 부분 테스트
   return (
     <Container>
       {/* 모바일 헤더 부분 */}
-      <header>
-        <button type="button">뒤로가기 버튼</button>
-        <h1>
-          <a href="#!">로고이미지</a>
-        </h1>
-        <button type="button">버튼</button>
-      </header>
+      <MHeader />
+      {/* <header> */}
+      {/*   <button type="button">뒤로가기 버튼</button> */}
+      {/*   <h1> */}
+      {/*     <a href="#!">로고이미지</a> */}
+      {/*   </h1> */}
+      {/*   <button type="button">버튼</button> */}
+      {/* </header> */}
       {/* 모바일 채팅 부분 */}
       <main>
         <section className="chatroom">
@@ -96,82 +76,16 @@ function MMain() {
             <h2>Room Title</h2>
           </article>
           <article className="chatBubble">
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>{" "}
-            <div className="partner">
-              <span>파트너 말풍선</span>
-            </div>
-            <div className="user">
-              <span>유저 말풍선</span>
-            </div>
+            {data[0] &&
+              data[0].map((value) => (
+                <div className={value.sender} key={Date.now()}>
+                  <span>{value.message}</span>
+                </div>
+              ))}
           </article>
         </section>
       </main>
-      <footer>
-        <div>
-          <input type="text" placeholder="메시지를 입력하세요." />
-        </div>
-        <button type="button">보내기</button>
-        <button type="button">마이크이미지</button>
-      </footer>
+      <MFooter />
     </Container>
   );
 }
