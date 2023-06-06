@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { messageActions } from "../../../../store/message";
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -24,12 +26,36 @@ const StyledFooter = styled.footer`
   }
 `;
 function MChatFooter() {
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSetInput = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleDispatch = (e) => {
+    e.preventDefault();
+    dispatch(messageActions.addMessages(inputValue));
+  };
+  const handleEnter = (e) => {
+    if (e === "Enter") {
+      handleDispatch();
+    }
+  };
+
   return (
     <StyledFooter>
       <div>
-        <input type="text" placeholder="메시지를 입력하세요." />
+        <input
+          type="text"
+          placeholder="메시지를 입력하세요."
+          onChange={handleSetInput}
+          onKeyDown={handleEnter}
+          value={inputValue}
+        />
       </div>
-      <button type="button">보내기</button>
+      <button type="button" onClick={handleDispatch}>
+        보내기
+      </button>
       <button type="button">마이크이미지</button>
     </StyledFooter>
   );

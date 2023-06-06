@@ -56,7 +56,7 @@ function MChatBox() {
         <article className="chatBubble">
           {messages &&
             messages.map((value) => (
-              <div className={value.sender} key={Date.now()}>
+              <div className={value.sender} key={value.id}>
                 <span>{value.message}</span>
               </div>
             ))}

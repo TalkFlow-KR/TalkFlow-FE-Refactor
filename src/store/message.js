@@ -13,7 +13,7 @@ const messageSlice = createSlice({
     },
     addMessages: (state, action) => {
       const newMessage = {
-        id: state.message.length + 1,
+        id: state.messages.length + 1,
         sender: "user",
         message: action.payload,
       };

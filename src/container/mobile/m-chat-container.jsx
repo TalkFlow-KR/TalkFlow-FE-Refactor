@@ -17,15 +17,19 @@ function MChatContainer() {
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("mMainContainer 컴포넌트 로딩완료", message);
+    console.log(message.length);
     //  fetch 로 서버에서 데이터를 가져오기
     // const getData = async () => {
     //   const fetch = await 주소
     //   const data = fetch.json();
     // };
-    dispatch(messageActions.setMessages(dummy));
-    console.log("완료", message);
-    console.log(message.messages);
-  }, [dispatch, message]);
+    if (!message.length) {
+      dispatch(messageActions.setMessages(dummy));
+      console.log("완료", message);
+    }
+    // 현재 프론트상에서 작업할 떄는, useEffect를 한번 렌더링,
+    // 서버 연결 후에는 화면에 보여주고, 다른 useEffect 이용해서 서버에서 받아올것.
+  }, []);
   return <MChat />;
 }
 
