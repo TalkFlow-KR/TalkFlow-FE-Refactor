@@ -30,13 +30,14 @@ function MChatFooter({ onAddMessage }) {
     setInputValue(e.target.value);
   };
   const handleAddMessage = () => {
+    // 앞뒤 스페이스 제거
     if (inputValue.trim() !== "") {
       onAddMessage(inputValue);
       setInputValue("");
     }
   };
   const handleEnter = (e) => {
-    if (e === "Enter") {
+    if (e.key === "Enter") {
       handleAddMessage();
     }
   };

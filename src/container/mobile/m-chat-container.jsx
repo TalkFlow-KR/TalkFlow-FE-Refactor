@@ -17,7 +17,7 @@ function MChatContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("mMainContainer 컴포넌트 로딩완료", messages);
+    console.log("mMainContainer 첫 로딩", messages);
     console.log(messages.length);
     //  fetch 로 서버에서 데이터를 가져오기
     // const getData = async () => {
@@ -33,7 +33,7 @@ function MChatContainer() {
   }, []);
 
   useEffect(() => {
-    console.log("message가 추가됐을때 useEffect발동", messages);
+    console.log("message가 추가됐을때 useEffect발동(mMAinContainer)", messages);
   }, [messages]);
   const handleAddMessage = (message) => {
     dispatch(messageActions.addMessages(message));

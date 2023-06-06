@@ -1,65 +1,55 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
+import ChatBubble from "../../atoms/ChatBubble/chat-bubble";
 // import { useSelector } from "react-redux";
 
 const StyledMain = styled.main`
+  flex-grow: 1;
+  flex-basis: calc(
+    90% -
+      (
+        ${(props) => props.theme.layout.mobile.footerHeight}px +
+          ${(props) => props.theme.layout.mobile.headerHeight}px
+      )
+  );
+  width: 100%;
   & section {
     background-color: #eee;
     border-radius: 8px;
     padding: 8px;
-    min-height: 720px;
     height: 100%;
+    max-height: 70vh;
+    overflow-y: hidden;
   }
-  & .chatroom {
-    height: 940px;
-    min-height: 640px;
-    background-color: black;
+  & .chatBubble {
+    // height calc 로 조절해서 사용하기.
+    //height: 940px;
+    padding: 2rem 1rem;
     overflow-y: auto;
-  }
-  & section article div {
-    margin: 1rem 0;
-  }
-  & section .ai {
-    display: flex;
-    justify-content: flex-start;
-  }
-  & section .ai > span {
-    display: inline-block;
-    height: 100%;
-    text-align: left;
-    background-color: #fff;
-    padding: 4px;
-    border-radius: 8px;
-    margin-left: 8px;
-  }
-  & section .user {
-    display: flex;
-    justify-content: flex-end;
-  }
-  & section .user > span {
-    height: 100%;
-    background-color: #aaa;
-    padding: 4px;
-    border-radius: 8px;
-    margin-right: 8px;
+    //background-color: tan;
+    max-height: 100%;
   }
 `;
 function MChatBox({ messages }) {
   console.log("mCHatBox", messages);
-  // const {}
+  const scrollRef = useRef(null);
+  // ChatBubble 추가시 스크롤위치 갱신
+  useEffect(() => {
+    // scrollTop = 현재 스크롤위치
+    // scrollHeight = 맨아래 스크롤위치 값
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  });
   return (
     <StyledMain>
+      <article>
+        <h2>Room Title</h2>
+      </article>
       <section className="chatroom">
-        <article>
-          <h2>Room Title</h2>
-        </article>
-        <article className="chatBubble">
+        <article className="chatBubble" ref={scrollRef}>
           {messages &&
             Array.isArray(messages) &&
             messages.map((value) => (
-              <div className={value.sender} key={value.id}>
-                <span>{value.message}</span>
-              </div>
+              <ChatBubble value={value} key={value.id} />
             ))}
         </article>
       </section>

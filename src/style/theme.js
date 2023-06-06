@@ -1,8 +1,8 @@
 const layout = {
   mobile: {
     test: "tan",
-    headerHeight: "62",
-    footerHeight: "72",
+    headerHeight: 62,
+    footerHeight: 72,
   },
 };
 
