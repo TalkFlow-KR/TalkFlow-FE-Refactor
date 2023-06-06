@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
-  background-color: #fff;
   display: flex;
   width: 100%;
   justify-content: space-between;
   padding: 2rem;
-
+  height: ${(props) => props.theme.layout.mobile.footerHeight};
+  background-color: ${(props) => props.theme.layout.mobile.test};
   & footer > div {
     display: flex;
     flex: 1;
@@ -15,6 +15,7 @@ const StyledFooter = styled.footer`
     width: fit-content;
   }
   & footer > div > input {
+    flex: 1 1 0;
     transition: all 0.3s ease-in-out;
     width: initial;
   }
@@ -22,7 +23,7 @@ const StyledFooter = styled.footer`
     width: 100%;
   }
 `;
-function MFooter() {
+function MChatFooter() {
   return (
     <StyledFooter>
       <div>
@@ -34,4 +35,4 @@ function MFooter() {
   );
 }
 
-export default MFooter;
+export default MChatFooter;

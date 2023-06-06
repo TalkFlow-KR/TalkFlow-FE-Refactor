@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MHeader from "../../components/atoms/Header/mHeader";
-import MFooter from "../../components/atoms/Footer/mFooter";
+import MChatFooter from "../../components/atoms/Footer/mChatFooter";
 // 말풍성 생성시 스크롤 맨밑으로
 // input 크기 넓어지면 커지는 동적 width /height
 const Container = styled.div`
@@ -85,7 +85,7 @@ function MMain({ data }) {
           </article>
         </section>
       </main>
-      <MFooter />
+      <MChatFooter />
     </Container>
   );
 }
