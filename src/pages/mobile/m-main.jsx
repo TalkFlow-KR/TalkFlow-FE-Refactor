@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import MHeader from "../../components/atoms/Header/mHeader";
-import MChatFooter from "../../components/atoms/Footer/mChatFooter";
+import MChatHeader from "../../components/atoms/Header/m-chat-header";
+import MChatFooter from "../../components/atoms/Footer/m-chat-footer";
 // 말풍성 생성시 스크롤 맨밑으로
 // input 크기 넓어지면 커지는 동적 width /height
 const Container = styled.div`
@@ -61,7 +61,7 @@ function MMain({ data }) {
   return (
     <Container>
       {/* 모바일 헤더 부분 */}
-      <MHeader />
+      <MChatHeader />
       {/* <header> */}
       {/*   <button type="button">뒤로가기 버튼</button> */}
       {/*   <h1> */}

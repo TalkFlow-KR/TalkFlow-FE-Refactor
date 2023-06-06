@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
   height: 62px;
   background-color: tan;
 `;
-function MHeader() {
+function MChatHeader() {
   return (
     <StyledHeader>
       <button type="button">뒤로가기 버튼</button>
@@ -19,4 +19,4 @@ function MHeader() {
   );
 }
 
-export default MHeader;
+export default MChatHeader;

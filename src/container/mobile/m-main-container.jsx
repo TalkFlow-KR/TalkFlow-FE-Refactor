@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MMain from "../../pages/mobile/mMain";
+import MMain from "../../pages/mobile/m-main";
 
 const dummy = [
   { id: 1, sender: "ai", message: "test" },
