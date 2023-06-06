@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const StyledMain = styled.main`
   & section {
@@ -44,8 +44,8 @@ const StyledMain = styled.main`
     margin-right: 8px;
   }
 `;
-function MChatBox() {
-  const { messages } = useSelector((state) => state.messages);
+function MChatBox({ messages }) {
+  console.log("mCHatBox", messages);
   // const {}
   return (
     <StyledMain>
@@ -55,6 +55,7 @@ function MChatBox() {
         </article>
         <article className="chatBubble">
           {messages &&
+            Array.isArray(messages) &&
             messages.map((value) => (
               <div className={value.sender} key={value.id}>
                 <span>{value.message}</span>

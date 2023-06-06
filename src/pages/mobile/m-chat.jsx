@@ -15,7 +15,7 @@ const Container = styled.div`
   padding: 1rem;
   gap: 1rem;
 `;
-function MChat() {
+function MChat({ messages, onAddMessage }) {
   // mChat 부분 테스트
   return (
     <Container>
@@ -29,8 +29,8 @@ function MChat() {
       {/*   <button type="button">버튼</button> */}
       {/* </header> */}
       {/* 모바일 채팅 부분 */}
-      <MChatBox />
-      <MChatFooter />
+      <MChatBox messages={messages} />
+      <MChatFooter onAddMessage={onAddMessage} />
     </Container>
   );
 }
