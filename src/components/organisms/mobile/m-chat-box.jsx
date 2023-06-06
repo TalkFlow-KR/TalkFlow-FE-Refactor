@@ -5,13 +5,6 @@ import ChatBubble from "../../atoms/ChatBubble/chat-bubble";
 
 const StyledMain = styled.main`
   flex-grow: 1;
-  flex-basis: calc(
-    90% -
-      (
-        ${(props) => props.theme.layout.mobile.footerHeight}px +
-          ${(props) => props.theme.layout.mobile.headerHeight}px
-      )
-  );
   width: 100%;
   & section {
     background-color: #eee;
@@ -32,8 +25,8 @@ const StyledMain = styled.main`
 `;
 function MChatBox({ messages }) {
   console.log("mCHatBox", messages);
-  const scrollRef = useRef(null);
   // ChatBubble 추가시 스크롤위치 갱신
+  const scrollRef = useRef(null);
   useEffect(() => {
     // scrollTop = 현재 스크롤위치
     // scrollHeight = 맨아래 스크롤위치 값

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  isFirstMount: true,
   messages: [],
 };
 
@@ -18,6 +19,9 @@ const messageSlice = createSlice({
         message: action.payload,
       };
       state.messages.push(newMessage);
+    },
+    setMount: (state, action) => {
+      state.isFirstMount = action.payload;
     },
   },
 });

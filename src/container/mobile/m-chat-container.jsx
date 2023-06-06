@@ -16,28 +16,28 @@ function MChatContainer() {
   const messages = useSelector((state) => state.messages);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("mMainContainer 첫 로딩", messages);
-    console.log(messages.length);
-    //  fetch 로 서버에서 데이터를 가져오기
-    // const getData = async () => {
-    //   const fetch = await 주소
-    //   const data = fetch.json();
-    // };
-    if (!messages.length) {
-      dispatch(messageActions.setMessages(dummy));
-      console.log("완료", messages);
-    }
-    // 현재 프론트상에서 작업할 떄는, useEffect를 한번 렌더링,
-    // 서버 연결 후에는 화면에 보여주고, 다른 useEffect 이용해서 서버에서 받아올것.\
-  }, []);
-
-  useEffect(() => {
-    console.log("message가 추가됐을때 useEffect발동(mMAinContainer)", messages);
-  }, [messages]);
   const handleAddMessage = (message) => {
     dispatch(messageActions.addMessages(message));
   };
+
+  useEffect(() => {
+    if (messages.isFirstMount) {
+      // fetch 로 서버 데이터 가져오기
+      console.log(
+        "mMainContainer 첫 로딩",
+        messages,
+        "첫로딩시 messages.length",
+        messages.length
+      );
+      // 서버데이터 dispatch 하기
+      dispatch(messageActions.setMessages(dummy));
+      // mount 성공시 첫마운트 false
+      dispatch(messageActions.setMount(false));
+    } else {
+      // input 으로 messages 값 변동 생기면 추가
+      console.log("isMount가 false 일때 가져오는 값", messages);
+    }
+  }, [messages]);
 
   return <MChat messages={messages.messages} onAddMessage={handleAddMessage} />;
 }
