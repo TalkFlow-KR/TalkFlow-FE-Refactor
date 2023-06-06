@@ -5,7 +5,7 @@ import {
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
-import chatSlice from "./chat";
+import messageSlice from "./message";
 
 export const asyncUpFetch = createAsyncThunk(
   "counterSlice/asyncUpFetch",
@@ -49,7 +49,7 @@ const counterSlice = createSlice({
 });
 
 const store = configureStore({
-  reducer: { counter: counterSlice.reducer, chat: chatSlice.reducer },
+  reducer: { counter: counterSlice.reducer, messages: messageSlice.reducer },
 });
 
 export default store;

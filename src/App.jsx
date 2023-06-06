@@ -1,7 +1,7 @@
 import React from "react";
 // import Test from "./container/Test";
 import styled, { ThemeProvider } from "styled-components";
-import MMainContainer from "./container/mobile/m-main-container";
+import MChatContainer from "./container/mobile/m-chat-container";
 import theme from "./style/theme";
 // import MMain from "./pages/mobile/mMain";
 // 최종출력은 container 폴더안 컴포넌트를 렌더한다.
@@ -18,7 +18,7 @@ function App() {
         {/* <Test /> */}
         {/* <hr /> */}
         {/* <MMain /> */}
-        <MMainContainer />
+        <MChatContainer />
       </ThemeProvider>
     </Main>
   );
