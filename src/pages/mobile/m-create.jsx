@@ -4,11 +4,11 @@ import MChatHeader from "../../components/organisms/mobile/Header/m-chat-header"
 import MCreateBox from "../../components/organisms/mobile/m-create-box";
 import MCreateFooter from "../../components/organisms/mobile/Footer/m-create-footer";
 
-function MCreate() {
+function MCreate({ messages }) {
   return (
     <MobileLayout>
       <MChatHeader />
-      <MCreateBox />
+      <MCreateBox messages={messages} />
       <MCreateFooter />
     </MobileLayout>
   );

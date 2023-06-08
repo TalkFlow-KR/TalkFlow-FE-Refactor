@@ -4,7 +4,15 @@ import MChat from "../../pages/mobile/m-chat";
 import { messageActions } from "../../store/message";
 
 const dummy = [
-  { id: 1, sender: "ai", message: "test" },
+  {
+    id: 1,
+    sender: "ai",
+    message:
+      "20글자테스트단어여기까지가스무글자임.\n" +
+      "20글자테스트단어여기까지가스무\n글자임." +
+      "20글자테\n스트단어여기까지가스무글자임." +
+      "20글자테스트단\n어여기까지가스무글자임.",
+  },
   { id: 2, sender: "user", message: "test2" },
   { id: 3, sender: "ai", message: "test3" },
   { id: 4, sender: "user", message: "test4" },

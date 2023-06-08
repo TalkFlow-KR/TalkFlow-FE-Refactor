@@ -8,19 +8,28 @@ const StyledFooter = styled.footer`
   padding: 2rem;
   height: ${(props) => props.theme.layout.mobile.footerHeight};
   background-color: ${(props) => props.theme.layout.mobile.test};
-  & footer > div {
+  & div {
     display: flex;
     flex: 1;
     background-color: orange;
     width: fit-content;
   }
-  & footer > div > input {
-    flex: 1 1 0;
-    transition: all 0.3s ease-in-out;
+
+  & input {
     width: initial;
   }
-  & footer > div > input:focus {
+  & input:focus {
     width: 100%;
+  }
+`;
+const StyledTextarea = styled.textarea`
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  overflow-y: hidden;
+  resize: none;
+  border: none;
+  &:focus {
+    outline: none;
   }
 `;
 function MChatFooter({ onAddMessage }) {
@@ -32,21 +41,24 @@ function MChatFooter({ onAddMessage }) {
   const handleAddMessage = () => {
     // 앞뒤 스페이스 제거
     if (inputValue.trim() !== "") {
+      console.log(inputValue);
       onAddMessage(inputValue);
       setInputValue("");
     }
   };
   const handleEnter = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && e.shiftKey) {
       handleAddMessage();
     }
+    // } else if (e.key === "Enter") {
+    //   setInputValue((prevValue) => `${prevValue}\n`);
+    // }
   };
 
   return (
     <StyledFooter>
       <div>
-        <input
-          type="text"
+        <StyledTextarea
           placeholder="메시지를 입력하세요."
           onChange={handleSetInput}
           onKeyDown={handleEnter}
