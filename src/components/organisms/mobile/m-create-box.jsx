@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 // import React, { useEffect } from "react";
 import styled from "styled-components";
 import ChatBubble from "../../atoms/ChatBubble/chat-bubble";
+import ButtonBubble from "../../atoms/ChatBubble/button-bubble";
 // import ChatBubble from "../../atoms/ChatBubble/chat-bubble";
 // import { useSelector } from "react-redux";
 
@@ -46,17 +47,9 @@ function MCreateBox({ messages }) {
             messages.map((value) => (
               <ChatBubble value={value} key={value.id} />
             ))}
+          <ButtonBubble />
         </article>
       </section>
-      {/* <section className="chatroom"> */}
-      {/*   <article className="chatBubble" ref={scrollRef}> */}
-      {/*     {messages && */}
-      {/*       Array.isArray(messages) && */}
-      {/*       messages.map((value) => ( */}
-      {/*         <ChatBubble value={value} key={value.id} /> */}
-      {/*       ))} */}
-      {/*   </article> */}
-      {/* </section> */}
     </StyledMain>
   );
 }
