@@ -44,9 +44,15 @@ function MCreateBox({ messages }) {
         <article className="chatBubble" ref={scrollRef}>
           {messages &&
             Array.isArray(messages) &&
-            messages.map((value) => (
-              <ChatBubble value={value} key={value.id} />
-            ))}
+            messages.map((value) => {
+              if (value.id % 2 === 0) {
+                return <ButtonBubble value={value} key={value.id} />;
+              }
+              if (value.id % 2 !== 0) {
+                return <ChatBubble value={value} key={value.id} />;
+              }
+              return null; // Default return value
+            })}
           <ButtonBubble />
         </article>
       </section>
