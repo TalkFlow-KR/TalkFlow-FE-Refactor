@@ -6,6 +6,7 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import messageSlice from "./message";
+import createChatSlice from "./create-chat";
 
 export const asyncUpFetch = createAsyncThunk(
   "counterSlice/asyncUpFetch",
@@ -25,6 +26,7 @@ export const asyncUpFetch = createAsyncThunk(
   }
 );
 
+// 비동기
 const counterSlice = createSlice({
   name: "counterSlice",
   initialState: {
@@ -49,7 +51,11 @@ const counterSlice = createSlice({
 });
 
 const store = configureStore({
-  reducer: { counter: counterSlice.reducer, messages: messageSlice.reducer },
+  reducer: {
+    counter: counterSlice.reducer,
+    messages: messageSlice.reducer,
+    create: createChatSlice.reducer,
+  },
 });
 
 export default store;

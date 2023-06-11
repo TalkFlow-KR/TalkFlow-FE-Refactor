@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Message = styled.div`
+export const Message = styled.div`
   margin: 1rem 0;
   .ai {
     display: flex;
@@ -13,7 +13,7 @@ const Message = styled.div`
     margin-right: 8px;
   }
 `;
-const Bubble = styled.div`
+export const Bubble = styled.div`
   & span {
     //word-wrap: break-word;
     //word-break: break-all;
@@ -36,7 +36,7 @@ const Bubble = styled.div`
     max-width: 60%;
   }
 `;
-const Name = styled.p`
+export const Name = styled.p`
   margin-bottom: 4px;
   font-weight: 700;
   &.ai {
