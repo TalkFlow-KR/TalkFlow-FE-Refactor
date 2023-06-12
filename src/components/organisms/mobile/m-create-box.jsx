@@ -26,7 +26,7 @@ const StyledMain = styled.main`
     max-height: 100%;
   }
 `;
-function MCreateBox({ messages }) {
+function MCreateBox({ messages, onSelectItem }) {
   // console.log("mCreateBox", messages);
   // ChatBubble 추가시 스크롤위치 갱신
   const scrollRef = useRef(null);
@@ -46,7 +46,13 @@ function MCreateBox({ messages }) {
             Array.isArray(messages) &&
             messages.map((value) => {
               if (value.id % 2 === 0) {
-                return <ButtonBubble value={value} key={value.id} />;
+                return (
+                  <ButtonBubble
+                    value={value}
+                    key={value.id}
+                    onSelectItem={onSelectItem}
+                  />
+                );
               }
               if (value.id % 2 !== 0) {
                 return <ChatBubble value={value} key={value.id} />;

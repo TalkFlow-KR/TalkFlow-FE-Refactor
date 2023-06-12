@@ -1,6 +1,7 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import MCreate from "../../pages/mobile/m-create";
+import { createChatActions } from "../../store/create-chat";
 
 const dummy = [
   {
@@ -25,10 +26,38 @@ const dummy = [
   { id: 6, sender: "user", message: ["여성", "군인", "래퍼"] },
 ];
 function MCreateContainer() {
-  const createChat = useSelector((state) => state.createChat);
   const dispatch = useDispatch();
+  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [selectedTheme, setSelectedTheme] = useState();
+  const [selectedPartner, setSelectedPartner] = useState();
 
-  return <MCreate messages={dummy} />;
+  const selected = {
+    selectedLanguage,
+    selectedTheme,
+    selectedPartner,
+  };
+  const onSelectItem = (item) => {
+    if (item === "language") {
+      setSelectedLanguage(item);
+    } else if (item === "theme") {
+      setSelectedTheme(item);
+    } else if (item === "partner") {
+      setSelectedPartner(item);
+    }
+  };
+  const onSubmit = () => {
+    dispatch(createChatActions.setLanguage(selectedLanguage));
+    dispatch(createChatActions.setTheme(selectedTheme));
+    dispatch(createChatActions.setMount(selectedPartner));
+  };
+  return (
+    <MCreate
+      messages={dummy}
+      onSubmit={onSubmit}
+      onSelectItem={onSelectItem}
+      selected={selected}
+    />
+  );
 }
 
 export default MCreateContainer;

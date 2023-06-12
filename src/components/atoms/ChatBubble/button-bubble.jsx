@@ -37,26 +37,21 @@ const Button = styled.button`
   z-index: 20;
 `;
 
-function ButtonBubble({ value }) {
+function ButtonBubble({ value, onSelectItem }) {
   const [currentX, setCurrentX] = useState("0");
   // const [language, setLanguage] = useState("");
   // const [theme, setTheme] = useState("");
   // const [partner, setPartner] = useState("");
 
-  const handleButton = (index, val) => {
-    if (index === 0) {
-      setCurrentX(`0px`);
-    } else if (index === 1) {
-      setCurrentX(`80px`);
-    } else if (index === 2) {
-      setCurrentX(`160px`);
-    }
+  const handleSelectItem = (index, item) => {
+    setCurrentX(index);
+    onSelectItem(item);
   };
   return (
     <Message>
       {value && (
         <>
-          <Name className={value.sender}>{`현재 선택 : ${language}`}</Name>
+          <Name className={value.sender}>a</Name>
           <Bubble className="user">
             <span>
               {value.map((item, index) => {
@@ -64,7 +59,7 @@ function ButtonBubble({ value }) {
                   <Button
                     type="button"
                     key={item.id}
-                    onClick={() => handleButton(index, item.message)}
+                    onClick={() => handleSelectItem(index, item.message)}
                   >
                     {item.message}
                   </Button>

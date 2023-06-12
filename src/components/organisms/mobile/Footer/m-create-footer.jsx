@@ -1,12 +1,18 @@
 import React from "react";
 
-function MCreateFooter() {
+function MCreateFooter({ selected, onSubmit }) {
+  function handleOnSubmit() {
+    console.log(selected);
+    onSubmit();
+  }
   return (
     <div>
-      <button type="button">test</button>
-      <button type="button">test</button>
-      <button type="button">test</button>
-      <button type="button">채팅 생성하기 </button>
+      <button type="button">{selected.selectedLanguage}</button>
+      <button type="button">{selected.selectedTheme}</button>
+      <button type="button"> {selected.selectedPartner}</button>
+      <button type="button" onClick={handleOnSubmit}>
+        채팅 생성하기
+      </button>
     </div>
   );
 }

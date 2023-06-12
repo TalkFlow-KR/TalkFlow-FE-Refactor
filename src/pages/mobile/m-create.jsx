@@ -4,12 +4,12 @@ import MChatHeader from "../../components/organisms/mobile/Header/m-chat-header"
 import MCreateBox from "../../components/organisms/mobile/m-create-box";
 import MCreateFooter from "../../components/organisms/mobile/Footer/m-create-footer";
 
-function MCreate({ messages }) {
+function MCreate({ messages, onSubmit, onSelectItem, selected }) {
   return (
     <MobileLayout>
       <MChatHeader />
-      <MCreateBox messages={messages} />
-      <MCreateFooter />
+      <MCreateBox messages={messages} onSelectItem={onSelectItem} />
+      <MCreateFooter onSubmit={onSubmit} selected={selected} />
     </MobileLayout>
   );
 }
