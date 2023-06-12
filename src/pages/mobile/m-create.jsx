@@ -8,7 +8,11 @@ function MCreate({ messages, onSubmit, onSelectItem, selected }) {
   return (
     <MobileLayout>
       <MChatHeader />
-      <MCreateBox messages={messages} onSelectItem={onSelectItem} />
+      <MCreateBox
+        messages={messages}
+        onSelectItem={onSelectItem}
+        selected={selected}
+      />
       <MCreateFooter onSubmit={onSubmit} selected={selected} />
     </MobileLayout>
   );

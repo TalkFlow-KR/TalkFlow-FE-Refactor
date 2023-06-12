@@ -1,31 +1,9 @@
 import React, { useEffect, useRef } from "react";
 // import React, { useEffect } from "react";
-import styled from "styled-components";
 import ChatBubble from "../../atoms/ChatBubble/chat-bubble";
 import ButtonBubble from "../../atoms/ChatBubble/button-bubble";
-// import ChatBubble from "../../atoms/ChatBubble/chat-bubble";
-// import { useSelector } from "react-redux";
+import StyledMain from "./m-create-box.styled";
 
-const StyledMain = styled.main`
-  flex-grow: 1;
-  width: 100%;
-  & section {
-    background-color: #eee;
-    border-radius: 8px;
-    padding: 8px;
-    height: 100%;
-    max-height: 70vh;
-    overflow-y: hidden;
-  }
-  & .chatBubble {
-    // height calc 로 조절해서 사용하기.
-    //height: 940px;
-    padding: 2rem 1rem;
-    overflow-y: auto;
-    //background-color: tan;
-    max-height: 100%;
-  }
-`;
 function MCreateBox({ messages, onSelectItem }) {
   // console.log("mCreateBox", messages);
   // ChatBubble 추가시 스크롤위치 갱신
@@ -43,23 +21,17 @@ function MCreateBox({ messages, onSelectItem }) {
       <section className="create-room">
         <article className="chatBubble" ref={scrollRef}>
           {messages &&
-            Array.isArray(messages) &&
-            messages.map((value) => {
-              if (value.id % 2 === 0) {
-                return (
-                  <ButtonBubble
-                    value={value}
-                    key={value.id}
-                    onSelectItem={onSelectItem}
-                  />
-                );
-              }
-              if (value.id % 2 !== 0) {
-                return <ChatBubble value={value} key={value.id} />;
-              }
-              return null; // Default return value
-            })}
-          <ButtonBubble />
+            messages.map((value) =>
+              value.sender === "ai" ? (
+                <ChatBubble value={value} key={value.id} />
+              ) : (
+                <ButtonBubble
+                  value={value}
+                  key={value.id}
+                  onSelectItem={onSelectItem}
+                />
+              )
+            )}
         </article>
       </section>
     </StyledMain>
