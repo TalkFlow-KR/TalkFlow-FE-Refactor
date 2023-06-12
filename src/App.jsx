@@ -6,6 +6,7 @@ import MChatContainer from "./container/mobile/m-chat-container";
 import theme from "./style/theme";
 import MCreateContainer from "./container/mobile/m-create-container";
 import MMainContainer from "./container/mobile/m-main-container";
+import Login from "./pages/auth/login";
 // import MMain from "./pages/mobile/m-main";
 // 최종출력은 container 폴더안 컴포넌트를 렌더한다.
 
@@ -24,7 +25,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MMainContainer />} />
+            <Route path="/" element={<Login />} />
             <Route path="/chat" element={<MChatContainer />} />
             <Route path="/create" element={<MCreateContainer />} />
           </Routes>
