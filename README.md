@@ -13,7 +13,7 @@
 * 메인 페이지 (/dashboard)
 * 페이지 1 (/chat)
 * 페이지 2 (/create)
-* 페이지 3 (/history)
+* ~~페이지 3 (/history)~~
 
 
 ## npm start 
