@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-// import Test from "./container/Test";
 import styled, { ThemeProvider } from "styled-components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MChatContainer from "./container/mobile/m-chat-container";
 import theme from "./style/theme";
 import MCreateContainer from "./container/mobile/m-create-container";
-import MMainContainer from "./container/mobile/m-main-container";
-import Login from "./pages/auth/login";
-// import MMain from "./pages/mobile/m-main";
+import MLogin from "./pages/auth/m-login";
+
 // 최종출력은 container 폴더안 컴포넌트를 렌더한다.
 
 const Main = styled.div`
@@ -25,7 +23,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<MLogin />} />
+            <Route path="/login" element={<MLogin />} />
             <Route path="/chat" element={<MChatContainer />} />
             <Route path="/create" element={<MCreateContainer />} />
           </Routes>
