@@ -14,7 +14,7 @@ const StyledMain = styled.main`
   & .chatBubble {
     // height calc 로 조절해서 사용하기.
     //height: 940px;
-    padding: 2rem 1rem;
+    //padding: 2rem 1rem;
     overflow-y: auto;
     //background-color: tan;
     max-height: 100%;

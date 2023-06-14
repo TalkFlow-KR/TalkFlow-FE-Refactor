@@ -5,12 +5,14 @@ export const Message = styled(ChatMessage)`
   position: relative;
   height: 100%;
   overflow: hidden;
-
+  display: flex;
+  justify-content: flex-end;
   & span {
     display: inline-flex;
-    width: 360px;
     padding: 20px;
     justify-content: space-between;
+    flex: 1;
+    max-width: none !important;
   }
 `;
 export const Bubble = styled(ChatBubble)`
@@ -37,7 +39,7 @@ export const Button = styled.button`
   position: relative;
   background-color: transparent;
   border: none;
-  width: 48px;
+  width: 44px;
   margin: 0 20px;
   z-index: 20;
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
