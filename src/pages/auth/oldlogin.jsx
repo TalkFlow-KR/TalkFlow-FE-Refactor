@@ -8,11 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { RiCloseFill } from "react-icons/ri";
 
 const Container = styled.main`
-  flex: 1 1 0;
-  height: 80vh;
-  border-radius: 2rem;
-  color: ${({ theme }) => theme.color.text100};
-  background-color: ${({ theme }) => theme.color.bg200};
   margin: 2rem;
   padding: 2rem;
   display: flex;
@@ -24,7 +19,6 @@ const Container = styled.main`
 const Wrapper = styled.div`
   flex: 1 1 0;
   max-width: 40rem;
-  ${({ theme }) => theme.layout.flexCenter};
   align-items: center;
 
   //background-color: orange;
@@ -36,11 +30,8 @@ const Wrapper = styled.div`
     //background-color: tan;
     padding: 8rem;
     border-radius: 2rem;
-    border: 0.1rem solid
-      ${({ password, theme }) =>
-        !password === true ? theme.color.primary200 : theme.color.primary100};
+    border: 0.1rem solid;
     background-color: #fff;
-    ${({ theme }) => theme.shadow};
   }
 
   //버튼 디자인
@@ -59,7 +50,6 @@ const emailInput = styled.input`
   }
   &:focus {
     border: 0.1rem solid transparent;
-    outline: 0.3rem solid ${({ theme }) => theme.color.primary100};
   }
 `;
 const clearEmailValueBtn = styled.button`
@@ -98,17 +88,12 @@ const loginBox = styled.section`
 
 const title = styled.h2`
   margin-bottom: 2rem;
-  color: ${({ theme }) => theme.color.text100};
 `;
-const register = styled.p`
-  color: ${({ theme }) => theme.color.text200};
-`;
+const register = styled.p``;
 const LoginBtn = styled.button`
   width: 100%;
   padding: 1.2rem 2rem;
   border-radius: 2rem;
-  background-color: ${({ theme, isPassword }) =>
-    isPassword === true ? theme.color.bg200 : theme.color.primary100};
 `;
 const emailBox = styled.div`
   width: 100%;
@@ -192,14 +177,7 @@ const S = {
   Or,
 };
 
-function Login({
-  onChange,
-  onSubmit,
-  loginData,
-  isUserActive,
-  notify,
-  setLoginData,
-}) {
+function Oldlogin({ onChange, onSubmit, loginData, notify, setLoginData }) {
   const navigate = useNavigate();
   const passwordRef = useRef(null);
 
@@ -331,6 +309,7 @@ function Login({
 
             <p style={{ textAlign: "center", margin: "1.6rem 0" }}>
               처음이신가요 ? <br />{" "}
+              {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
               <span
                 onClick={onRegister}
                 style={{ cursor: "pointer", fontWeight: "900" }}
@@ -340,11 +319,10 @@ function Login({
             </p>
             <KaKaoBox />
           </>
-          )
         </S.loginBox>
       </Wrapper>
     </Container>
   );
 }
 
-export default Login;
+export default Oldlogin;
