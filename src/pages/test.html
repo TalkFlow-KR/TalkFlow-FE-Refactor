@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      background-color: #bbb;
+      display: flex;
+      justify-content: center;
+    }
+    body {
+      width: 100%;
+      background-color: orange;
+      padding: 10px;
+    }
+    div {
+      margin: 0 auto;
+      max-width: 500px;
+      padding: 10px;
+      background-color: #aaa;
+    }
+    label {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      background-color: teal;
+      min-width: 360px;
+    }
+    label span {
+      margin: 4px;
+    }
+    label input {
+      width: inherit;
+      padding: 8px 16px;
+      outline: none;
+      border: 0;
+      border-radius: 8px;
+      height: 30px;
+    }
+    p {
+      background-color: orangered;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+    p span {
+      font-weight: 700;
+      font-size: small;
+    }
+    label button {
+      position: absolute;
+      bottom: -26px;
+      top: 0;
+      right: 7px;
+      outline: none;
+      border: 0;
+      background-color: red;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      margin: auto 0;
+    }
+  </style>
+  <body>
+    <div>
+      <h1>Login</h1>
+      <label
+        ><span>email</span>
+        <input type="text" placeholder="email@email.com" />
+        <button>C</button>
+      </label>
+      <br />
+      <label>
+        <span>password</span>
+        <input type="password" placeholder="password " />
+        <button>S</button>
+      </label>
+      <p>처음이신가요 <span> 회원가입하기 </span></p>
+    </div>
+  </body>
+</html>
