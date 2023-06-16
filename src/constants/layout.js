@@ -1,4 +1,4 @@
-const layout = {
+const layout = Object.freeze({
   fCenter: {
     display: "flex",
     justifyContent: "center",
@@ -60,6 +60,6 @@ const layout = {
     "04": 40,
     "05": 50,
   },
-};
+});
 
 export default layout;

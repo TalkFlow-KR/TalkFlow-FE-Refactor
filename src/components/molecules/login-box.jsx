@@ -1,5 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+//
+
+const mainContainer = styled.main`
+  margin: 0 auto;
+  padding: ${(props) => props.theme.layout.gap.base}px;
+`;
+
+//
 
 function LoginBox() {
   const navigate = useNavigate();
