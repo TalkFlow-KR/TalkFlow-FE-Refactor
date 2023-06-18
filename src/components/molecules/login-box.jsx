@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-
-//
-
-const mainContainer = styled.main`
-  margin: 0 auto;
-  padding: ${(props) => props.theme.layout.gap.base}px;
-`;
-
-//
+import {
+  Container,
+  InputBox,
+  InputTitle,
+  Title,
+  StyledInput,
+  StyledButton,
+  Item,
+  Register,
+} from "./login-box.styled";
 
 function LoginBox() {
   const navigate = useNavigate();
@@ -62,50 +62,39 @@ function LoginBox() {
   // }, [showPwInput]);
 
   return (
-    <main>
-      <h1>Login</h1>
-      <input
-        autoFocus
-        type="text"
-        name="hmUserEmail"
-        id="userEmail"
-        placeholder="Email"
-        value={emailValue}
-        onChange={handleEmailValueChange}
-        onKeyDown={handleEmailEnter}
-        autoComplete="false"
-      />
-      <button type="button" onClick={onClear}>
-        초기화
-      </button>
+    <Container>
+      <Title>Login</Title>
+      <Item>
+        <InputTitle htmlFor="email">
+          <span>email</span>
+        </InputTitle>
+        <InputBox>
+          <StyledInput>
+            <input type="text" placeholder="email@email.com" id="email" />
+          </StyledInput>
+          <StyledButton>
+            <button>C</button>
+          </StyledButton>
+        </InputBox>
+      </Item>
       <br />
-      <input
-        ref={passwordInputRef}
-        type={showPassword ? "text" : "password"}
-        name="pw"
-        id="pw"
-        value={passwordValue}
-        placeholder="Password"
-        onChange={handlePasswordValueChange}
-      />
-      <button type="button" onClick={onShowPassword}>
-        패스워드보기{" "}
-      </button>
-      <br />
-      <button type="button" onClick={handleSubmit}>
-        Login
-      </button>
-      <p>
-        처음이신가요?
-        <span
-          role="presentation"
-          onClick={handleNavRegister}
-          onKeyDown={handleNavRegister}
-        >
-          회원가입 하기
-        </span>
-      </p>
-    </main>
+      <Item>
+        <InputTitle htmlFor="pw">
+          <span>password</span>
+        </InputTitle>
+        <InputBox>
+          <StyledInput>
+            <input type="text" placeholder="password" id="pw" />
+          </StyledInput>
+          <StyledButton>
+            <button>C</button>
+          </StyledButton>
+        </InputBox>
+      </Item>
+      <Register>
+        처음이신가요 <span> 회원가입하기 </span>
+      </Register>
+    </Container>
   );
 }
 
