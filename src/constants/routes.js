@@ -1,60 +1,57 @@
-const mobile = [
+const ROUTES = [
   {
-    path: "/",
-    component: "m",
+    ID: 0,
+    NAME: "INDEX",
+    PATH: "/",
+    COMPONENT: {
+      MOBILE: "",
+      DESKTOP: "",
+    },
   },
   {
-    path: "/dashboard",
-    component: "M",
+    ID: 1,
+    NAME: "DASHBOARD",
+    PATH: "/dashboard",
+    COMPONENT: {
+      MOBILE: "",
+      DESKTOP: "",
+    },
   },
   {
-    path: "/login",
-    component: "",
+    ID: 2,
+    NAME: "LOGIN",
+    PATH: "/login",
+    COMPONENT: {
+      MOBILE: "",
+      DESKTOP: "",
+    },
   },
   {
-    path: "/register",
-    component: "",
+    ID: 3,
+    NAME: "REGISTER",
+    PATH: "/register",
+    COMPONENT: {
+      MOBILE: "",
+      DESKTOP: "",
+    },
   },
   {
-    path: "/chat",
-    component: "",
+    ID: 4,
+    NAME: "CHAT",
+    PATH: "/chat",
+    COMPONENT: {
+      MOBILE: "",
+      DESKTOP: "",
+    },
   },
   {
-    path: "/create",
-    component: "",
+    ID: 5,
+    NAME: "CREATE",
+    PATH: "/create",
+    COMPONENT: {
+      MOBILE: "",
+      DESKTOP: "",
+    },
   },
 ];
-
-const desktop = [
-  {
-    path: "/",
-    component: "m",
-  },
-  {
-    path: "/dashboard",
-    component: "M",
-  },
-  {
-    path: "/login",
-    component: "",
-  },
-  {
-    path: "/register",
-    component: "",
-  },
-  {
-    path: "/chat",
-    component: "",
-  },
-  {
-    path: "/create",
-    component: "",
-  },
-];
-
-const routes = {
-  mobile,
-  desktop,
-};
-
-export default routes;
+export default ROUTES;
