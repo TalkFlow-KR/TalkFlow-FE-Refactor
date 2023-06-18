@@ -1,5 +1,15 @@
 
-# KDT 6기 팀프로젝트 TalkFlow React 리뉴얼 작업입니다.
+# 💬 ABC FLOW / FRONT-END
+### Ai-Bot Chaflow / Ai based conversational assistant
+### AI 기반으로 다국어 회화를 배우는 채팅형 서비스 
+
+## 프로젝트 개요 
+## 기술 스택
+## 코드/커밋 컨벤션
+## 폴더/파일 구조 
+## 프리뷰
+## 이슈
+## 
 * redux/toolkit 이용해서 states 관리   
 * atomic pattern 과 polymorphic component 를 이용한 컴포넌트/ 설계 최적화   
 * styled-components 를 이용한 스타일 관리   
