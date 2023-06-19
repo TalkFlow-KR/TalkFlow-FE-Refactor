@@ -1,7 +1,9 @@
 import React from "react";
+import { BUTTON_TYPE } from "../../../constants/variant";
 
 function Button({ children, variant }) {
-  return <button type={type || "button"}>{children}</button>;
+  const type = variant || BUTTON_TYPE.BUTTON;
+  return <button type={type}>{children}</button>;
 }
 
 export default Button;

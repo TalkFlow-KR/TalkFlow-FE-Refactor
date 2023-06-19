@@ -8,10 +8,10 @@ import {
   Title,
   Item,
   Register,
+  StyledInput,
+  StyledButton,
 } from "./login-box.styled";
-import Input from "../atoms/Input/input";
-import { Button } from "../atoms/ChatBubble/button-bubble.styled";
-import { INPUT_TYPE } from "../../constants/variant";
+import { BUTTON_TYPE, INPUT_TYPE } from "../../constants/variant";
 import ROUTES from "../../constants/routes";
 
 const API =
@@ -82,7 +82,7 @@ function LoginBox() {
   };
   // Register : navigate to registry
   const handleNavRegister = () => {
-    navigate(ROUTES.Names.REGISTER);
+    navigate(ROUTES.REGISTER.NAVIGATE);
   };
 
   // 렌더링
@@ -94,14 +94,14 @@ function LoginBox() {
           <span>{INPUT_TYPE.EMAIL_INPUT.TEXT}</span>
         </InputTitle>
         <InputBox>
-          <Input
+          <StyledInput
             variant={INPUT_TYPE.EMAIL_INPUT}
             id={INPUT_TYPE.EMAIL_INPUT.ID}
             value={emailValue}
             onChange={handleEmailValueChange}
             onKeydown={onEmailEnter}
           />
-          <Button type="button" onClear={onClear} />
+          <StyledButton variant={BUTTON_TYPE.BUTTON} onClear={onClear} />
         </InputBox>
       </Item>
       <br />
@@ -110,16 +110,19 @@ function LoginBox() {
           <span>{INPUT_TYPE.PASSWORD_INPUT.TEXT}</span>
         </InputTitle>
         <InputBox>
-          <Input
+          <StyledInput
             variant={INPUT_TYPE.PASSWORD_INPUT}
             id={INPUT_TYPE.PASSWORD_INPUT.ID}
             value={passwordValue}
             onChange={handlePasswordValueChange}
             onKeydown={onPasswordEnter}
           />
-          <Button type="button" onShowPassword={onShowPassword} />
+          <StyledButton
+            variant={BUTTON_TYPE.BUTTON}
+            onShowPassword={onShowPassword}
+          />
         </InputBox>
-        <Button type="button" onClick={handleLogin} />
+        <StyledButton variant={BUTTON_TYPE.BUTTON} onClick={handleLogin} />
       </Item>
       <Register>
         처음이신가요

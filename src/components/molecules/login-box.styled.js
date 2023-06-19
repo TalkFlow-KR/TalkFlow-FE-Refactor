@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Button as ButtonAtom } from "../atoms/Button/button";
-import { Input as InputAtom } from "../atoms/Input/input";
+import Button from "../atoms/Button/button";
+import Input from "../atoms/Input/input";
 
 export const Container = styled.article`
   display: flex;
@@ -35,7 +35,7 @@ export const InputTitle = styled.label`
 export const InputBox = styled.div`
   display: flex;
 `;
-export const Input = styled(InputAtom)`
+export const StyledInput = styled(Input)`
   flex: 1;
   width: inherit;
   padding: 8px 16px;
@@ -56,7 +56,7 @@ export const Register = styled.p`
     font-weight: 700;
   }
 `;
-export const StyledButton = styled(ButtonAtom)`
+export const StyledButton = styled(Button)`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
