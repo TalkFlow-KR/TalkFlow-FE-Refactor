@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../atoms/Button/button";
+import { StyledButton } from "../atoms/Button/button";
 import Input from "../atoms/Input/input";
 
 export const Container = styled.article`
@@ -56,7 +56,7 @@ export const Register = styled.p`
     font-weight: 700;
   }
 `;
-export const StyledButton = styled(Button)`
+export const InputButton = styled(StyledButton)`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -67,4 +67,9 @@ export const StyledButton = styled(Button)`
   width: 16px;
   height: 16px;
   margin: auto 0;
+`;
+
+export const LoginButton = styled(StyledButton)`
+  border: 0;
+  outline: none;
 `;
