@@ -2,6 +2,7 @@
   "extends": ["react-app", "prettier", "airbnb","plugin:react/recommended", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "rules": {
+    "react/button-has-type": "off",
     "react/jsx-props-no-spreading" : 0,
     "import/no-extraneous-dependencies": 0,
     "react/prop-types": "off",
