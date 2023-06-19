@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { GrPowerReset } from "react-icons/gr";
+import { AiFillEye } from "react-icons/ai";
+
 import {
   Container,
   InputBox,
@@ -9,7 +12,8 @@ import {
   Item,
   Register,
   StyledInput,
-  StyledButton,
+  InputButton,
+  LoginButton,
 } from "./login-box.styled";
 import { BUTTON_TYPE, INPUT_TYPE } from "../../constants/variant";
 import ROUTES from "../../constants/routes";
@@ -101,28 +105,42 @@ function LoginBox() {
             onChange={handleEmailValueChange}
             onKeydown={onEmailEnter}
           />
-          <StyledButton variant={BUTTON_TYPE.BUTTON} onClear={onClear} />
+          <InputButton variant={BUTTON_TYPE.BUTTON} onClear={onClear}>
+            <GrPowerReset />
+          </InputButton>
         </InputBox>
       </Item>
       <br />
       <Item>
-        <InputTitle htmlFor={INPUT_TYPE.PASSWORD_INPUT.ID}>
-          <span>{INPUT_TYPE.PASSWORD_INPUT.TEXT}</span>
-        </InputTitle>
-        <InputBox>
-          <StyledInput
-            variant={INPUT_TYPE.PASSWORD_INPUT}
-            id={INPUT_TYPE.PASSWORD_INPUT.ID}
-            value={passwordValue}
-            onChange={handlePasswordValueChange}
-            onKeydown={onPasswordEnter}
-          />
-          <StyledButton
-            variant={BUTTON_TYPE.BUTTON}
-            onShowPassword={onShowPassword}
-          />
-        </InputBox>
-        <StyledButton variant={BUTTON_TYPE.BUTTON} onClick={handleLogin} />
+        {showPwInput && (
+          <>
+            <InputTitle htmlFor={INPUT_TYPE.PASSWORD_INPUT.ID}>
+              <span>{INPUT_TYPE.PASSWORD_INPUT.TEXT}</span>
+            </InputTitle>
+            <InputBox>
+              <StyledInput
+                variant={
+                  showPassword
+                    ? INPUT_TYPE.PASSWORD_INPUT
+                    : INPUT_TYPE.SHOW_PASSWORD_INPUT
+                }
+                id={INPUT_TYPE.PASSWORD_INPUT.ID}
+                value={passwordValue}
+                onChange={handlePasswordValueChange}
+                onKeydown={onPasswordEnter}
+              />
+              <InputButton
+                variant={BUTTON_TYPE.BUTTON}
+                onShowPassword={onShowPassword}
+              >
+                <AiFillEye />
+              </InputButton>
+            </InputBox>
+          </>
+        )}
+        <LoginButton variant={BUTTON_TYPE.BUTTON} onClick={handleLogin}>
+          LOGIN
+        </LoginButton>
       </Item>
       <Register>
         처음이신가요
