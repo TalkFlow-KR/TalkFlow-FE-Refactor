@@ -2,7 +2,6 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-
     <title>Document</title>
   </head>
   <style>
@@ -18,26 +17,44 @@
     body {
       width: 100%;
       background-color: orange;
-      padding: 10px;
     }
-
-    div {
+    h1 {
+      margin-bottom: 40px;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       margin: 0 auto;
       max-width: 500px;
       padding: 10px;
       background-color: #aaa;
+      height: 200px;
     }
-    label {
+    article {
       display: flex;
       position: relative;
       flex-direction: column;
       background-color: teal;
       min-width: 360px;
     }
+    div {
+      display: flex;
+    }
+    label {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+    }
     label span {
+      font-size: 14px;
+    }
+    div span {
       margin: 4px;
     }
-    label input {
+    input {
+      flex: 1;
       width: inherit;
       padding: 8px 16px;
       outline: none;
@@ -57,13 +74,13 @@
       font-weight: 700;
       font-size: small;
     }
-    label button {
+
+    button {
       position: absolute;
-      bottom: -26px;
-      top: 0;
-      right: 7px;
-      outline: none;
-      border: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+      z-index: 10;
       background-color: red;
       border-radius: 50%;
       width: 16px;
@@ -72,20 +89,24 @@
     }
   </style>
   <body>
-    <div>
+    <main>
       <h1>Login</h1>
-      <label
-        ><span>email</span>
-        <input type="text" placeholder="email@email.com" />
-        <button>C</button>
-      </label>
+      <article>
+        <label for="email"><span>email</span></label>
+        <div>
+          <input type="text" placeholder="email@email.com" id="email" />
+          <button>C</button>
+        </div>
+      </article>
       <br />
-      <label>
-        <span>password</span>
-        <input type="password" placeholder="password " />
-        <button>S</button>
-      </label>
+      <article>
+        <label for="pw"><span>password</span> </label>
+        <div>
+          <input type="text" placeholder="password" id="pw" />
+          <button>C</button>
+        </div>
+      </article>
       <p>처음이신가요 <span> 회원가입하기 </span></p>
-    </div>
+    </main>
   </body>
 </html>

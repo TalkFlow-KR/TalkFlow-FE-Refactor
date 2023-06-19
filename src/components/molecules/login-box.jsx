@@ -82,7 +82,7 @@ function LoginBox() {
   };
   // Register : navigate to registry
   const handleNavRegister = () => {
-    navigate(ROUTES.);
+    navigate(ROUTES.Names.REGISTER);
   };
 
   // 렌더링
