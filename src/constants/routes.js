@@ -1,63 +1,44 @@
-const ROUTES = [{}];
+const ROUTES = {
+  INDEX: {
+    ID: 0,
+    NAVIGATE: "/",
+    COMPONENT: {
+      MOBILE: "<Home/>",
+      DESKTOP: "<Home/>",
+    },
+  },
+  DASHBOARD: {
+    ID: 1,
+    NAVIGATE: "dashboard",
+    COMPONENT: {
+      MOBILE: "<MDashboard/>",
+      DESKTOP: "<DDashboard/>",
+    },
+  },
+  LOGIN: {
+    ID: 2,
+    NAVIGATE: "login",
+    COMPONENT: {
+      MOBILE: "<MLogin/>",
+      DESKTOP: "<DLogin/>",
+    },
+  },
+  REGISTER: {
+    ID: 3,
+    NAVIGATE: "register",
+    COMPONENT: {
+      MOBILE: "<MRegister/>",
+      DESKTOP: "<DRegister/>",
+    },
+  },
+  CHAT: {
+    ID: 4,
+    NAVIGATE: "chat",
+    COMPONENT: {
+      MOBILE: "<MChatContainer/>",
+      DESKTOP: "<DChatContainer/>",
+    },
+  },
+};
 
-// const ROUTES = [
-//   {
-//     INDEX : {
-//       ID:0,
-//       NAME:"INDEX",
-//     }
-//     ID: 0,
-//     NAME: "INDEX",
-//     PATH: "/",
-//     COMPONENT: {
-//       MOBILE: "",
-//       DESKTOP: "",
-//     },
-//   },
-//   {
-//     ID: 1,
-//     NAME: "DASHBOARD",
-//     PATH: "/dashboard",
-//     COMPONENT: {
-//       MOBILE: "",
-//       DESKTOP: "",
-//     },
-//   },
-//   {
-//     ID: 2,
-//     NAME: "LOGIN",
-//     PATH: "/login",
-//     COMPONENT: {
-//       MOBILE: "",
-//       DESKTOP: "",
-//     },
-//   },
-//   {
-//     ID: 3,
-//     NAME: "REGISTER",
-//     PATH: "/register",
-//     COMPONENT: {
-//       MOBILE: "",
-//       DESKTOP: "",
-//     },
-//   },
-//   {
-//     ID: 4,
-//     NAME: "CHAT",
-//     PATH: "/chat",
-//     COMPONENT: {
-//       MOBILE: "",
-//       DESKTOP: "",
-//     },
-//   },
-//   {
-//     ID: 5,
-//     NAME: "CREATE",
-//     PATH: "/create",
-//     COMPONENT: {
-//       MOBILE: "",
-//       DESKTOP: "",
-//     },
-//   },
-// ];
-// export default ROUTES;
+export default ROUTES;

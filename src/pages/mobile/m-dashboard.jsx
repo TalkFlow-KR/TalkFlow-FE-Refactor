@@ -1,7 +1,7 @@
 import React from "react";
 
-function MMain() {
+function MDashboard() {
   return <h1>Mobile main 화면 </h1>;
 }
 
-export default MMain;
+export default MDashboard;
