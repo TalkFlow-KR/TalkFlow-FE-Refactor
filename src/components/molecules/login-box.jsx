@@ -28,7 +28,7 @@ function LoginBox() {
   const [passwordValue, setPasswordValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showPwInput, setShowPwInput] = useState(false);
-  // const [top, setTop] = useState("2.4rem");
+  // const [top, setTop] = useState("2.4rem");z
 
   // useEffect(() => {
   //   if (showPwInput) {

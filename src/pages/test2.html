@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      background-color: #bbb;
+      display: flex;
+      justify-content: center;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+
+      background-color: orange;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 500px;
+      padding: 10px;
+      background-color: #aaa;
+      height: auto;
+    }
+    article {
+      width: 100%;
+      background-color: palegoldenrod;
+      margin: 4px 0;
+    }
+    row {
+      display: flex;
+      gap: 10px;
+    }
+    row inputitem {
+      display: block;
+      flex: 1;
+      background-color: orange;
+    }
+    row inputitem button {
+      width: 100%;
+    }
+    inputitem input {
+      width: 100%;
+    }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+  </style>
+  <body>
+    <main>
+      <span>이미 회원이신가요 ? 로그인 하기 </span>
+      <article>
+        <h1>ABCFLOW 회원가입 하기</h1>
+        <p>ABCFLOW 오신것을 환영합니다!</p>
+        <p>지금 바로 회원가입하고, 무료로 서비스 이용하세요.</p>
+      </article>
+      <article>
+        <p>* Name은 공백이 될 수 없습니다.</p>
+        <p>* username은 공백이 될 수 없습니다.</p>
+        <p>* email 양식이 잘못 되었습니다.</p>
+        <p>* 약관에 동의하셔야합니다.</p>
+        <p>* 비밀번호가 너무 짧습니다. (6글자 이상)</p>
+      </article>
+      <article>
+        <row>
+          <inputitem>
+            <label for="username"><span>Username</span></label>
+            <br />
+            <input type="text" id="username" />
+          </inputitem>
+          <inputitem>
+            <label for="name"><span>Name</span></label>
+            <br />
+            <input type="text" id="name" />
+          </inputitem>
+        </row>
+      </article>
+      <article>
+        <row>
+          <inputitem>
+            <label for="email"><span>Email</span></label>
+            <br />
+            <input type="text" id="email" />
+          </inputitem>
+        </row>
+      </article>
+      <article>
+        <row>
+          <inputitem>
+            <label for="password"><span>Password</span></label>
+            <br />
+            <input type="text" id="password" />
+          </inputitem>
+        </row>
+      </article>
+      <article>
+        <row>
+          <inpuitem>
+            <input type="checkbox" id="check" />
+            <label for="check">회원가입과 동시에 약관에 동의합니다.</label>
+          </inpuitem>
+        </row>
+      </article>
+      <article>
+        <row>
+          <inputitem>
+            <button>계정생성</button>
+          </inputitem>
+        </row>
+      </article>
+    </main>
+  </body>
+</html>
