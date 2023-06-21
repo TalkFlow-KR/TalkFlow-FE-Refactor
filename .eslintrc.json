@@ -2,6 +2,12 @@
   "extends": ["react-app", "prettier", "airbnb","plugin:react/recommended", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "rules": {
+    "jsx-a11y/label-has-associated-control": [
+    2,
+    {
+      "labelAttributes": ["htmlFor"]
+    }
+  ],
     "react/button-has-type": "off",
     "react/jsx-props-no-spreading" : 0,
     "import/no-extraneous-dependencies": 0,
