@@ -73,74 +73,112 @@
 // export default RegisterBox;
 
 import React from "react";
+import { AiFillAlert } from "react-icons/ai";
+import {
+  Article,
+  Button,
+  Container,
+  InputItem,
+  Row,
+  Title,
+  Alert,
+  Input,
+  LabelText,
+  P,
+  Span,
+  AlertArticle,
+} from "./register-box.styled";
 
-const RegisterBox = () => {
+function RegisterBox() {
   return (
-    <>
-
-      <main>
-        <span>이미 회원이신가요 ? 로그인 하기 </span>
-        <article>
-          <h1>ABCFLOW 회원가입 하기</h1>
-          <p>ABCFLOW 오신것을 환영합니다!</p>
-          <p>지금 바로 회원가입하고, 무료로 서비스 이용하세요.</p>
-        </article>
-        <article>
-          <p>* Name은 공백이 될 수 없습니다.</p>
-          <p>* username은 공백이 될 수 없습니다.</p>
-          <p>* email 양식이 잘못 되었습니다.</p>
-          <p>* 약관에 동의하셔야합니다.</p>
-          <p>* 비밀번호가 너무 짧습니다. (6글자 이상)</p>
-        </article>
-        <article>
-          <row>
-            <inputitem>
-              <label for="username"><span>Username</span></label>
-              <br />
-              <input type="text" id="username" />
-            </inputitem>
-            <inputitem>
-              <label for="name"><span>Name</span></label>
-              <br />
-              <input type="text" id="name" />
-            </inputitem>
-          </row>
-        </article>
-        <article>
-          <row>
-            <inputitem>
-              <label for="email"><span>Email</span></label>
-              <br />
-              <input type="text" id="email" />
-            </inputitem>
-          </row>
-        </article>
-        <article>
-          <row>
-            <inputitem>
-              <label for="password"><span>Password</span></label>
-              <br />
-              <input type="text" id="password" />
-            </inputitem>
-          </row>
-        </article>
-        <article>
-          <row>
-            <inpuitem>
-              <input type="checkbox" id="check" />
-              <label for="check">회원가입과 동시에 약관에 동의합니다.</label>
-            </inpuitem>
-          </row>
-        </article>
-        <article>
-          <row>
-            <inputitem>
-              <button>계정생성</button>
-            </inputitem>
-          </row>
-        </article>
-    </>
+    <Container>
+      <Alert>이미 회원이신가요 ? 로그인 하기 </Alert>
+      <Article>
+        <Title>ABCFLOW 회원가입 하기</Title>
+        <P>ABCFLOW 오신것을 환영합니다!</P>
+        <P>지금 바로 회원가입하고, 무료로 서비스 이용하세요.</P>
+      </Article>
+      <AlertArticle>
+        <P>
+          <AiFillAlert />
+          Name은 공백이 될 수 없습니다.
+        </P>
+        <P>
+          <AiFillAlert />
+          email 양식이 잘못 되었습니다.
+        </P>
+        <P>
+          <AiFillAlert />
+          약관에 동의하셔야합니다.
+        </P>
+        <P>
+          <AiFillAlert />
+          비밀번호가 너무 짧습니다. (6글자 이상)
+        </P>
+        <P>
+          <AiFillAlert />
+          Name은 공백이 될 수 없습니다.
+        </P>
+      </AlertArticle>
+      <Article>
+        <Row>
+          <InputItem>
+            <LabelText htmlFor="username">
+              <Span>Username</Span>
+            </LabelText>
+            <br />
+            <Input type="text" id="username" />
+          </InputItem>
+          <InputItem>
+            <LabelText htmlFor="name">
+              <Span>Name</Span>
+            </LabelText>
+            <br />
+            <Input type="text" id="name" />
+          </InputItem>
+        </Row>
+      </Article>
+      <Article>
+        <Row>
+          <InputItem>
+            <LabelText htmlFor="email">
+              <Span>Email</Span>
+            </LabelText>
+            <br />
+            <Input type="text" id="email" />
+          </InputItem>
+        </Row>
+      </Article>
+      <Article>
+        <Row>
+          <InputItem>
+            <LabelText htmlFor="password">
+              <Span>Password</Span>
+            </LabelText>
+            <br />
+            <Input type="text" id="password" />
+          </InputItem>
+        </Row>
+      </Article>
+      <Article>
+        <Row>
+          <InputItem>
+            <Input type="checkbox" id="check" />
+            <LabelText htmlFor="check">
+              회원가입과 동시에 약관에 동의합니다.
+            </LabelText>
+          </InputItem>
+        </Row>
+      </Article>
+      <Article>
+        <Row>
+          <InputItem>
+            <Button>계정생성</Button>
+          </InputItem>
+        </Row>
+      </Article>
+    </Container>
   );
-};
+}
 
 export default RegisterBox;

@@ -11,7 +11,7 @@ import {
   Title,
   Item,
   Register,
-  StyledInput,
+  Input,
   InputButton,
   LoginButton,
 } from "./login-box.styled";
@@ -98,7 +98,7 @@ function LoginBox() {
           <span>{INPUT_TYPE.EMAIL_INPUT.TEXT}</span>
         </InputTitle>
         <InputBox>
-          <StyledInput
+          <Input
             variant={INPUT_TYPE.EMAIL_INPUT}
             id={INPUT_TYPE.EMAIL_INPUT.ID}
             value={emailValue}
@@ -118,7 +118,7 @@ function LoginBox() {
               <span>{INPUT_TYPE.PASSWORD_INPUT.TEXT}</span>
             </InputTitle>
             <InputBox>
-              <StyledInput
+              <Input
                 variant={
                   showPassword
                     ? INPUT_TYPE.PASSWORD_INPUT

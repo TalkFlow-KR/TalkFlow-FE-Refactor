@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { StyledButton } from "../atoms/Button/button";
-import Input from "../atoms/Input/input";
+import { StyledInput } from "../atoms/Input/input.styled";
 
 export const Container = styled.article`
   display: flex;
@@ -35,7 +35,7 @@ export const InputTitle = styled.label`
 export const InputBox = styled.div`
   display: flex;
 `;
-export const StyledInput = styled(Input)`
+export const Input = styled(StyledInput)`
   flex: 1;
   width: inherit;
   padding: 8px 16px;
