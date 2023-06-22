@@ -48,6 +48,7 @@ export const Span = styled.span``;
 export const P = styled.p``;
 
 export const Alert = styled.span``;
+export const Login = styled.span``;
 export const AlertArticle = styled(Article)`
   position: relative;
   color: red;

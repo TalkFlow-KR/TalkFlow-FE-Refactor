@@ -72,7 +72,7 @@
 //
 // export default RegisterBox;
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillAlert } from "react-icons/ai";
 import {
   Article,
@@ -87,54 +87,137 @@ import {
   P,
   Span,
   AlertArticle,
+  Login,
 } from "./register-box.styled";
+import { BUTTON_TYPE } from "../../constants/variant";
+import LOCALE from "../../constants/locale";
 
 function RegisterBox() {
+  const [isInputError, setIsInputError] = useState([
+    {
+      id: 0,
+      error: false,
+    },
+    { id: 1, error: false },
+    { id: 2, error: false },
+    { id: 3, error: false },
+    { id: 4, error: false },
+  ]);
+  const [nameValue, setNameValue] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
+  const [userEmailValue, setUserEmailValue] = useState("");
+  const [userPasswordValue, setUserPasswordValue] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleNameChange = (e) => setNameValue(e.target.value);
+  const handleUsernameChange = (e) => setUsernameValue(e.target.value);
+  const handleEmailChange = (e) => setUserEmailValue(e.target.value);
+  const handlePasswordChange = (e) => setUserPasswordValue(e.target.value);
+  const handleCheckboxChange = (e) => {
+    e.preventDefault();
+    setIsChecked((prev) => !prev);
+  };
+
+  const getErrorString = (i) => {
+    if (i === 0) {
+      return LOCALE.SIGNUP.ERROR.USER_NAME_EMPTY;
+    }
+    if (i === 1) {
+      return LOCALE.SIGNUP.ERROR.EMAIL_ERROR;
+    }
+    if (i === 2) {
+      return LOCALE.SIGNUP.ERROR.NAME_EMPTY;
+    }
+    if (i === 3) {
+      return LOCALE.SIGNUP.ERROR.PW_SHORT;
+    }
+    if (i === 4) {
+      return LOCALE.SIGNUP.ERROR.AGREE_TERMS;
+    }
+    return null;
+  };
+  const onSubmit = () => {
+    if (!isChecked) {
+      setIsInputError((prevErrors) => [
+        { id: 0, error: true },
+        ...prevErrors.slice(1),
+      ]);
+    }
+    if (!nameValue) {
+      setIsInputError((prevErrors) => [
+        { id: 1, error: true },
+        ...prevErrors.slice(1),
+      ]);
+    }
+    if (!usernameValue) {
+      setIsInputError((prevErrors) => [
+        { id: 2, error: true },
+        ...prevErrors.slice(1),
+      ]);
+    }
+    if (!userEmailValue) {
+      setIsInputError((prevErrors) => [
+        { id: 3, error: true },
+        ...prevErrors.slice(1),
+      ]);
+    }
+    if (!userPasswordValue) {
+      setIsInputError((prevErrors) => [
+        { id: 4, error: true },
+        ...prevErrors.slice(1),
+      ]);
+    }
+    console.log("회원가입 성공 ");
+    console.log(isInputError);
+  };
+
+  useEffect(() => {}, [isInputError]);
   return (
     <Container>
-      <Alert>이미 회원이신가요 ? 로그인 하기 </Alert>
+      <Alert>
+        {LOCALE.SIGNUP.ASK_LOGIN}
+        <Login>{LOCALE.SIGNUP.LOGIN}</Login>
+      </Alert>
       <Article>
-        <Title>ABCFLOW 회원가입 하기</Title>
-        <P>ABCFLOW 오신것을 환영합니다!</P>
-        <P>지금 바로 회원가입하고, 무료로 서비스 이용하세요.</P>
+        <Title>{LOCALE.SIGNUP.TITLE}</Title>
+        <P>{LOCALE.SIGNUP.SUBTITLE}</P>
+        <P>{LOCALE.SIGNUP.TEXT}</P>
       </Article>
       <AlertArticle>
-        <P>
-          <AiFillAlert />
-          Name은 공백이 될 수 없습니다.
-        </P>
-        <P>
-          <AiFillAlert />
-          email 양식이 잘못 되었습니다.
-        </P>
-        <P>
-          <AiFillAlert />
-          약관에 동의하셔야합니다.
-        </P>
-        <P>
-          <AiFillAlert />
-          비밀번호가 너무 짧습니다. (6글자 이상)
-        </P>
-        <P>
-          <AiFillAlert />
-          Name은 공백이 될 수 없습니다.
-        </P>
+        {isInputError.map((error, index) =>
+          error.error ? (
+            <P key={error.id}>
+              <AiFillAlert />
+              {getErrorString(index)}
+            </P>
+          ) : null
+        )}
       </AlertArticle>
       <Article>
         <Row>
           <InputItem>
             <LabelText htmlFor="username">
-              <Span>Username</Span>
+              <Span>{LOCALE.SIGNUP.USERNAME}</Span>
             </LabelText>
             <br />
-            <Input type="text" id="username" />
+            <Input
+              type="text"
+              id="username"
+              value={usernameValue}
+              onChange={handleUsernameChange}
+            />
           </InputItem>
           <InputItem>
             <LabelText htmlFor="name">
-              <Span>Name</Span>
+              <Span>{LOCALE.SIGNUP.NAME}</Span>
             </LabelText>
             <br />
-            <Input type="text" id="name" />
+            <Input
+              type="text"
+              id="name"
+              value={nameValue}
+              onChange={handleNameChange}
+            />
           </InputItem>
         </Row>
       </Article>
@@ -142,10 +225,15 @@ function RegisterBox() {
         <Row>
           <InputItem>
             <LabelText htmlFor="email">
-              <Span>Email</Span>
+              <Span>{LOCALE.SIGNUP.EMAIL}</Span>
             </LabelText>
             <br />
-            <Input type="text" id="email" />
+            <Input
+              type="text"
+              id="email"
+              value={userEmailValue}
+              onChange={handleEmailChange}
+            />
           </InputItem>
         </Row>
       </Article>
@@ -153,27 +241,37 @@ function RegisterBox() {
         <Row>
           <InputItem>
             <LabelText htmlFor="password">
-              <Span>Password</Span>
+              <Span>{LOCALE.SIGNUP.PASSWORD}</Span>
             </LabelText>
             <br />
-            <Input type="text" id="password" />
+            <Input
+              type="text"
+              id="password"
+              value={userPasswordValue}
+              onChange={handlePasswordChange}
+            />
           </InputItem>
         </Row>
       </Article>
       <Article>
         <Row>
           <InputItem>
-            <Input type="checkbox" id="check" />
-            <LabelText htmlFor="check">
-              회원가입과 동시에 약관에 동의합니다.
-            </LabelText>
+            <Input
+              type="checkbox"
+              id="check"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <LabelText htmlFor="check">{LOCALE.SIGNUP.AGREE_TERMS}</LabelText>
           </InputItem>
         </Row>
       </Article>
       <Article>
         <Row>
           <InputItem>
-            <Button>계정생성</Button>
+            <Button variant={BUTTON_TYPE.BUTTON} onClick={onSubmit}>
+              {LOCALE.SIGNUP.SIGNUP_BUTTON}
+            </Button>
           </InputItem>
         </Row>
       </Article>
