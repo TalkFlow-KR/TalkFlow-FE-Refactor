@@ -89,7 +89,7 @@ import {
   AlertArticle,
   Login,
 } from "./register-box.styled";
-import { BUTTON_TYPE } from "../../constants/variant";
+import { BUTTON_TYPE, INPUT_TYPE } from "../../constants/variant";
 import LOCALE from "../../constants/locale";
 
 function RegisterBox() {
@@ -103,21 +103,21 @@ function RegisterBox() {
     { id: 3, error: false },
     { id: 4, error: false },
   ]);
-  const [nameValue, setNameValue] = useState("");
-  const [usernameValue, setUsernameValue] = useState("");
-  const [userEmailValue, setUserEmailValue] = useState("");
-  const [userPasswordValue, setUserPasswordValue] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleNameChange = (e) => setNameValue(e.target.value);
-  const handleUsernameChange = (e) => setUsernameValue(e.target.value);
-  const handleEmailChange = (e) => setUserEmailValue(e.target.value);
-  const handlePasswordChange = (e) => setUserPasswordValue(e.target.value);
-  const handleCheckboxChange = (e) => {
-    e.preventDefault();
-    setIsChecked((prev) => !prev);
+  const [inputValues, setInputValues] = useState({
+    [INPUT_TYPE.NAME_INPUT.NAME]: "",
+    [INPUT_TYPE.USERNAME_INPUT.NAME]: "",
+    [INPUT_TYPE.PASSWORD_INPUT.NAME]: "",
+    [INPUT_TYPE.EMAIL_INPUT.NAME]: "",
+    [INPUT_TYPE.CHECKBOX_INPUT.NAME]: false,
+  });
+  const handleInputsChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const inputValue = type === "checkbox" ? checked : value;
+    setInputValues((prev) => ({
+      ...prev,
+      [name]: inputValue,
+    }));
   };
-
   const getErrorString = (i) => {
     if (i === 0) {
       return LOCALE.SIGNUP.ERROR.USER_NAME_EMPTY;
@@ -137,36 +137,6 @@ function RegisterBox() {
     return null;
   };
   const onSubmit = () => {
-    if (!isChecked) {
-      setIsInputError((prevErrors) => [
-        { id: 0, error: true },
-        ...prevErrors.slice(1),
-      ]);
-    }
-    if (!nameValue) {
-      setIsInputError((prevErrors) => [
-        { id: 1, error: true },
-        ...prevErrors.slice(1),
-      ]);
-    }
-    if (!usernameValue) {
-      setIsInputError((prevErrors) => [
-        { id: 2, error: true },
-        ...prevErrors.slice(1),
-      ]);
-    }
-    if (!userEmailValue) {
-      setIsInputError((prevErrors) => [
-        { id: 3, error: true },
-        ...prevErrors.slice(1),
-      ]);
-    }
-    if (!userPasswordValue) {
-      setIsInputError((prevErrors) => [
-        { id: 4, error: true },
-        ...prevErrors.slice(1),
-      ]);
-    }
     console.log("회원가입 성공 ");
     console.log(isInputError);
   };
@@ -196,27 +166,31 @@ function RegisterBox() {
       <Article>
         <Row>
           <InputItem>
+            {/* username */}
             <LabelText htmlFor="username">
               <Span>{LOCALE.SIGNUP.USERNAME}</Span>
             </LabelText>
             <br />
             <Input
-              type="text"
-              id="username"
-              value={usernameValue}
-              onChange={handleUsernameChange}
+              type={INPUT_TYPE.USERNAME_INPUT.TYPE}
+              id={INPUT_TYPE.USERNAME_INPUT.ID}
+              name={INPUT_TYPE.USERNAME_INPUT.NAME}
+              value={inputValues[INPUT_TYPE.USERNAME_INPUT.NAME]}
+              onChange={handleInputsChange}
             />
           </InputItem>
           <InputItem>
-            <LabelText htmlFor="name">
+            {/* realname */}
+            <LabelText htmlFor="rname">
               <Span>{LOCALE.SIGNUP.NAME}</Span>
             </LabelText>
             <br />
             <Input
-              type="text"
-              id="name"
-              value={nameValue}
-              onChange={handleNameChange}
+              type={INPUT_TYPE.NAME_INPUT.TYPE}
+              id={INPUT_TYPE.NAME_INPUT.ID}
+              name={INPUT_TYPE.NAME_INPUT.NAME}
+              value={inputValues[INPUT_TYPE.NAME_INPUT.NAME]}
+              onChange={handleInputsChange}
             />
           </InputItem>
         </Row>
@@ -224,15 +198,17 @@ function RegisterBox() {
       <Article>
         <Row>
           <InputItem>
+            {/* email */}
             <LabelText htmlFor="email">
               <Span>{LOCALE.SIGNUP.EMAIL}</Span>
             </LabelText>
             <br />
             <Input
-              type="text"
-              id="email"
-              value={userEmailValue}
-              onChange={handleEmailChange}
+              type={INPUT_TYPE.EMAIL_INPUT.TYPE}
+              id={INPUT_TYPE.EMAIL_INPUT.ID}
+              name={INPUT_TYPE.EMAIL_INPUT.NAME}
+              value={inputValues[INPUT_TYPE.EMAIL_INPUT.NAME]}
+              onChange={handleInputsChange}
             />
           </InputItem>
         </Row>
@@ -240,6 +216,7 @@ function RegisterBox() {
       <Article>
         <Row>
           <InputItem>
+            {/* password */}
             <LabelText htmlFor="password">
               <Span>{LOCALE.SIGNUP.PASSWORD}</Span>
             </LabelText>
@@ -247,8 +224,8 @@ function RegisterBox() {
             <Input
               type="text"
               id="password"
-              value={userPasswordValue}
-              onChange={handlePasswordChange}
+              value={inputValues[INPUT_TYPE.PASSWORD_INPUT.NAME]}
+              onChange={handleInputsChange}
             />
           </InputItem>
         </Row>
@@ -256,11 +233,12 @@ function RegisterBox() {
       <Article>
         <Row>
           <InputItem>
+            {/* checkbox */}
             <Input
               type="checkbox"
               id="check"
-              checked={isChecked}
-              onChange={handleCheckboxChange}
+              checked={inputValues[INPUT_TYPE.CHECKBOX_INPUT.NAME]}
+              onChange={handleInputsChange}
             />
             <LabelText htmlFor="check">{LOCALE.SIGNUP.AGREE_TERMS}</LabelText>
           </InputItem>
