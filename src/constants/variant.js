@@ -34,6 +34,7 @@ export const INPUT_TYPE = Object.freeze({
     TYPE: "checkbox",
     TEXT: "CHECKBOX",
     PLACEHOLDER: "CHECKBOX",
+    IS_CHECKED: false,
   },
   TEXT: "text",
   SHOW_PASSWORD_INPUT: {

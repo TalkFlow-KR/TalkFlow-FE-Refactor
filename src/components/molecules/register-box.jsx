@@ -72,7 +72,7 @@
 //
 // export default RegisterBox;
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AiFillAlert } from "react-icons/ai";
 import {
   Article,
@@ -94,14 +94,11 @@ import LOCALE from "../../constants/locale";
 
 function RegisterBox() {
   const [isInputError, setIsInputError] = useState([
-    {
-      id: 0,
-      error: false,
-    },
-    { id: 1, error: false },
-    { id: 2, error: false },
-    { id: 3, error: false },
-    { id: 4, error: false },
+    { id: 0, nameError: false },
+    { id: 1, usernameError: false },
+    { id: 2, userEmailError: false },
+    { id: 3, userPasswordError: false },
+    { id: 4, isCheckboxError: false },
   ]);
   const [inputValues, setInputValues] = useState({
     [INPUT_TYPE.NAME_INPUT.NAME]: "",
@@ -137,11 +134,44 @@ function RegisterBox() {
     return null;
   };
   const onSubmit = () => {
-    console.log("회원가입 성공 ");
-    console.log(isInputError);
+    console.log("test", Object.values(isInputError));
+    if (inputValues[INPUT_TYPE.NAME_INPUT.NAME] === "") {
+      setIsInputError((prev) => ({
+        ...prev,
+        nameError: true,
+      }));
+    }
+    if (inputValues[INPUT_TYPE.USERNAME_INPUT.NAME] === "") {
+      setIsInputError.usernameError = true;
+      setIsInputError((prev) => ({
+        ...prev,
+        usernameError: true,
+      }));
+    }
+    if (inputValues[INPUT_TYPE.PASSWORD_INPUT.NAME] === "") {
+      setIsInputError((prev) => ({
+        ...prev,
+        passwordError: true,
+      }));
+    }
+    if (inputValues[INPUT_TYPE.EMAIL_INPUT.NAME] === "") {
+      setIsInputError((prev) => ({
+        ...prev,
+        userEmailError: true,
+      }));
+    }
+    if (inputValues[INPUT_TYPE.CHECKBOX_INPUT.NAME] === false) {
+      setIsInputError((prev) => ({
+        ...prev,
+        isCheckboxError: true,
+      }));
+    } else {
+      console.log("회원가입 성공 ");
+      console.log(inputValues[INPUT_TYPE.NAME_INPUT.NAME]);
+      console.log(isInputError);
+    }
   };
 
-  useEffect(() => {}, [isInputError]);
   return (
     <Container>
       <Alert>
@@ -154,14 +184,18 @@ function RegisterBox() {
         <P>{LOCALE.SIGNUP.TEXT}</P>
       </Article>
       <AlertArticle>
-        {isInputError.map((error, index) =>
-          error.error ? (
-            <P key={error.id}>
-              <AiFillAlert />
-              {getErrorString(index)}
-            </P>
-          ) : null
-        )}
+        {Object.values(isInputError).map((error, index) => {
+          const isError = Object.values(error).includes(true);
+          if (isError) {
+            return (
+              <P key={error.id}>
+                <AiFillAlert />
+                {getErrorString(index)}
+              </P>
+            );
+          }
+          return null;
+        })}
       </AlertArticle>
       <Article>
         <Row>
@@ -222,8 +256,9 @@ function RegisterBox() {
             </LabelText>
             <br />
             <Input
-              type="text"
-              id="password"
+              type={INPUT_TYPE.PASSWORD_INPUT.TYPE}
+              id={INPUT_TYPE.PASSWORD_INPUT.ID}
+              name={INPUT_TYPE.PASSWORD_INPUT.NAME}
               value={inputValues[INPUT_TYPE.PASSWORD_INPUT.NAME]}
               onChange={handleInputsChange}
             />
@@ -237,7 +272,7 @@ function RegisterBox() {
             <Input
               type="checkbox"
               id="check"
-              checked={inputValues[INPUT_TYPE.CHECKBOX_INPUT.NAME]}
+              checked={inputValues[INPUT_TYPE.CHECKBOX_INPUT.IS_CHECKED]}
               onChange={handleInputsChange}
             />
             <LabelText htmlFor="check">{LOCALE.SIGNUP.AGREE_TERMS}</LabelText>
