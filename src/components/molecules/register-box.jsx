@@ -93,13 +93,6 @@ import { BUTTON_TYPE, INPUT_TYPE } from "../../constants/variant";
 import LOCALE from "../../constants/locale";
 
 function RegisterBox() {
-  const [isInputError, setIsInputError] = useState([
-    { id: 0, nameError: false },
-    { id: 1, usernameError: false },
-    { id: 2, userEmailError: false },
-    { id: 3, userPasswordError: false },
-    { id: 4, isCheckboxError: false },
-  ]);
   const [inputValues, setInputValues] = useState({
     [INPUT_TYPE.NAME_INPUT.NAME]: "",
     [INPUT_TYPE.USERNAME_INPUT.NAME]: "",
@@ -116,60 +109,53 @@ function RegisterBox() {
     }));
   };
   const getErrorString = (i) => {
+    console.log(i);
+    if (i === 4) {
+      return LOCALE.SIGNUP.ERROR.AGREE_TERMS;
+    }
     if (i === 0) {
       return LOCALE.SIGNUP.ERROR.USER_NAME_EMPTY;
     }
-    if (i === 1) {
+    if (i === 2) {
       return LOCALE.SIGNUP.ERROR.EMAIL_ERROR;
     }
-    if (i === 2) {
+    if (i === 1) {
       return LOCALE.SIGNUP.ERROR.NAME_EMPTY;
     }
     if (i === 3) {
       return LOCALE.SIGNUP.ERROR.PW_SHORT;
     }
-    if (i === 4) {
-      return LOCALE.SIGNUP.ERROR.AGREE_TERMS;
-    }
+
     return null;
   };
+  const [isInputError, setIsInputError] = useState([
+    { id: 0, nameError: false },
+    { id: 1, usernameError: false },
+    { id: 2, userEmailError: false },
+    { id: 3, userPasswordError: false },
+    { id: 4, isCheckboxError: false },
+  ]);
   const onSubmit = () => {
-    console.log("test", Object.values(isInputError));
+    console.log(Object.values(isInputError));
     if (inputValues[INPUT_TYPE.NAME_INPUT.NAME] === "") {
-      setIsInputError((prev) => ({
-        ...prev,
-        nameError: true,
-      }));
+      setIsInputError((prev) => [...prev, { id: "0", nameError: true }]);
     }
     if (inputValues[INPUT_TYPE.USERNAME_INPUT.NAME] === "") {
-      setIsInputError.usernameError = true;
-      setIsInputError((prev) => ({
-        ...prev,
-        usernameError: true,
-      }));
-    }
-    if (inputValues[INPUT_TYPE.PASSWORD_INPUT.NAME] === "") {
-      setIsInputError((prev) => ({
-        ...prev,
-        passwordError: true,
-      }));
+      setIsInputError((prev) => [...prev, { id: "1", usernameError: true }]);
     }
     if (inputValues[INPUT_TYPE.EMAIL_INPUT.NAME] === "") {
-      setIsInputError((prev) => ({
-        ...prev,
-        userEmailError: true,
-      }));
+      setIsInputError((prev) => [...prev, { id: "2", userEmailError: true }]);
     }
-    if (inputValues[INPUT_TYPE.CHECKBOX_INPUT.NAME] === false) {
-      setIsInputError((prev) => ({
+    if (inputValues[INPUT_TYPE.PASSWORD_INPUT.NAME] === "") {
+      setIsInputError((prev) => [
         ...prev,
-        isCheckboxError: true,
-      }));
-    } else {
-      console.log("회원가입 성공 ");
-      console.log(inputValues[INPUT_TYPE.NAME_INPUT.NAME]);
-      console.log(isInputError);
+        { id: "3", userPasswordError: true },
+      ]);
     }
+    if (inputValues[INPUT_TYPE.CHECKBOX_INPUT.IS_CHECKED] === false) {
+      setIsInputError((prev) => [...prev, { id: "4", isCheckboxError: true }]);
+    }
+    return console.log(isInputError);
   };
 
   return (
@@ -184,13 +170,13 @@ function RegisterBox() {
         <P>{LOCALE.SIGNUP.TEXT}</P>
       </Article>
       <AlertArticle>
-        {Object.values(isInputError).map((error, index) => {
+        {Object.values(isInputError).map((error) => {
           const isError = Object.values(error).includes(true);
           if (isError) {
             return (
               <P key={error.id}>
                 <AiFillAlert />
-                {getErrorString(index)}
+                {getErrorString(error.id)}
               </P>
             );
           }
