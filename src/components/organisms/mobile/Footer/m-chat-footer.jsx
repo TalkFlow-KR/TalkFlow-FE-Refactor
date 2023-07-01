@@ -9,8 +9,8 @@ const StyledFooter = styled.footer`
   width: 100%;
   justify-content: space-between;
   padding: 2rem;
-  height: ${(props) => props.theme.layout.mobile.footerHeight};
-  background-color: ${(props) => props.theme.layout.mobile.test};
+  height: 62px;
+  background-color: tan;
   & input {
     width: initial;
   }
@@ -27,6 +27,7 @@ const ExpandableDiv = styled.div`
   background-color: orange;
   //margin-top: -${(props) => props.height}px;
   margin-top: calc(-${(props) => props.height}px + 26px);
+  //padding-top: calc(-${(props) => props.height}px + 26px);
 `;
 
 const StyledTextarea = styled(TextareaAutosize)`
