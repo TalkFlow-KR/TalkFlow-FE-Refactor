@@ -109,7 +109,6 @@ function RegisterBox() {
     }));
   };
   const getErrorString = (i) => {
-    console.log(i);
     if (i === 4) {
       return LOCALE.SIGNUP.ERROR.AGREE_TERMS;
     }

@@ -40,7 +40,6 @@ function MChatBox({ messages }) {
       <section className="chatroom">
         <article className="chatBubble" ref={scrollRef}>
           {messages &&
-            Array.isArray(messages) &&
             messages.map((value) => (
               <ChatBubble value={value} key={value.id} />
             ))}
